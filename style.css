@@ -1,0 +1,1526 @@
+/* ============================================================
+   九州福岡 10 日遊 — Style
+   ============================================================ */
+
+/* --- CSS Custom Properties ---------------------------------- */
+:root {
+  --color-primary: #1a365d;
+  --color-primary-light: #2a4a7f;
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-accent: #f6ad55;
+  --color-accent-light: #fef3e2;
+  --color-border: #e5e7eb;
+  --color-success: #48bb78;
+  --color-tag-me: #ebf4ff;
+  --color-tag-me-text: #2b6cb0;
+  --color-tag-all: #f0fdf4;
+  --color-tag-all-text: #276749;
+  --color-pending-bg: #fffaf0;
+  --color-pending-border: #f6ad55;
+  --color-bar-1: #1a365d;
+  --color-bar-2: #f6ad55;
+  --color-bar-3: #48bb78;
+  --color-bar-4: #e53e3e;
+  --color-bar-5: #805ad5;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-stack: -apple-system, "PingFang TC", "Noto Sans TC", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", sans-serif;
+  --nav-height: 56px;
+  --tab-bar-height: 64px;
+}
+
+/* --- Dark Mode ---------------------------------------------- */
+/* Manual light: force light even when system prefers dark */
+[data-theme="light"] {
+  --color-primary: #1a365d;
+  --color-primary-light: #2a4a7f;
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-accent: #f6ad55;
+  --color-accent-light: #fef3e2;
+  --color-border: #e5e7eb;
+  --color-success: #48bb78;
+  --color-tag-me: #ebf4ff;
+  --color-tag-me-text: #2b6cb0;
+  --color-tag-all: #f0fdf4;
+  --color-tag-all-text: #276749;
+  --color-pending-bg: #fffaf0;
+  --color-pending-border: #f6ad55;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Manual dark via data-theme attribute */
+[data-theme="dark"] {
+  --color-primary: #90cdf4;
+  --color-primary-light: #63b3ed;
+  --color-bg: #111827;
+  --color-surface: #1f2937;
+  --color-text: #f3f4f6;
+  --color-text-secondary: #9ca3af;
+  --color-border: #374151;
+  --color-accent: #f6ad55;
+  --color-accent-light: #3c2a14;
+  --color-tag-me: #1e3a5f;
+  --color-tag-me-text: #90cdf4;
+  --color-tag-all: #1a3329;
+  --color-tag-all-text: #68d391;
+  --color-pending-bg: #2d1f0e;
+  --color-pending-border: #f6ad55;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Manual black (AMOLED) via data-theme attribute */
+[data-theme="black"] {
+  --color-primary: #90cdf4;
+  --color-primary-light: #63b3ed;
+  --color-bg: #000000;
+  --color-surface: #0d0d0d;
+  --color-text: #e5e5e5;
+  --color-text-secondary: #8b8b8b;
+  --color-border: #1f1f1f;
+  --color-accent: #f6ad55;
+  --color-accent-light: #2a1a08;
+  --color-tag-me: #0f1f33;
+  --color-tag-me-text: #90cdf4;
+  --color-tag-all: #0f1f14;
+  --color-tag-all-text: #68d391;
+  --color-pending-bg: #1a1208;
+  --color-pending-border: #f6ad55;
+  --shadow-card: none;
+  --shadow-card-hover: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* EVA Unit-01 theme */
+[data-theme="eva"] {
+  --color-primary: #00ff41;
+  --color-primary-light: #39ff6e;
+  --color-bg: #0a0014;
+  --color-surface: #1a0033;
+  --color-text: #e0d8f0;
+  --color-text-secondary: #9b8fbf;
+  --color-border: #2a1050;
+  --color-accent: #ff8c00;
+  --color-accent-light: #2a1800;
+  --color-tag-me: #0d1a00;
+  --color-tag-me-text: #00ff41;
+  --color-tag-all: #1a0a2e;
+  --color-tag-all-text: #c084fc;
+  --color-pending-bg: #1a0d00;
+  --color-pending-border: #ff8c00;
+  --color-bar-1: #7b2ff2;
+  --color-bar-2: #00ff41;
+  --color-bar-3: #ff8c00;
+  --color-bar-4: #ff3366;
+  --color-bar-5: #00e5ff;
+  --shadow-card: 0 0 8px rgba(0, 255, 65, 0.08);
+  --shadow-card-hover: 0 0 16px rgba(0, 255, 65, 0.15);
+}
+
+/* Auto dark: only when no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) :root,
+  html:not([data-theme]) {
+    --color-primary: #90cdf4;
+    --color-primary-light: #63b3ed;
+    --color-bg: #111827;
+    --color-surface: #1f2937;
+    --color-text: #f3f4f6;
+    --color-text-secondary: #9ca3af;
+    --color-border: #374151;
+    --color-accent: #f6ad55;
+    --color-accent-light: #3c2a14;
+    --color-tag-me: #1e3a5f;
+    --color-tag-me-text: #90cdf4;
+    --color-tag-all: #1a3329;
+    --color-tag-all-text: #68d391;
+    --color-pending-bg: #2d1f0e;
+    --color-pending-border: #f6ad55;
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* --- Reset & Base ------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-stack);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(var(--tab-bar-height) + 16px);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* --- Top Nav (desktop) -------------------------------------- */
+.top-nav {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.top-nav__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  padding: 0 24px;
+  gap: 8px;
+}
+
+.top-nav__brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-right: auto;
+  white-space: nowrap;
+}
+
+.top-nav__link {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.top-nav__link:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.top-nav__link.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* --- Bottom Tab Bar (mobile) -------------------------------- */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: var(--tab-bar-height);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.tab-bar__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.65rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-bar__btn .icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.tab-bar__btn.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* --- Main Container ----------------------------------------- */
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.section {
+  display: none;
+  opacity: 0;
+}
+
+.section.active {
+  display: block;
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Section Header ----------------------------------------- */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+/* --- Cards -------------------------------------------------- */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card--pending {
+  border: 2px dashed var(--color-pending-border);
+  background: var(--color-pending-bg);
+}
+
+.card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.card__value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* --- Countdown ---------------------------------------------- */
+.countdown {
+  text-align: center;
+  padding: 28px 20px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius);
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.countdown__number {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.countdown__label {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* --- Trip Info Grid ----------------------------------------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.info-grid .card {
+  margin-bottom: 0;
+  padding: 16px;
+}
+
+/* --- Flight Card -------------------------------------------- */
+.flight-card {
+  margin-bottom: 16px;
+}
+
+.flight-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.flight-card__direction {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.flight-card__date {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.flight-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.flight-row:last-child {
+  border-bottom: none;
+}
+
+.flight-row__tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  min-width: 32px;
+  text-align: center;
+}
+
+.flight-row__tag--me {
+  background: var(--color-tag-me);
+  color: var(--color-tag-me-text);
+}
+
+.flight-row__tag--fd {
+  background: var(--color-accent-light);
+  color: #c05621;
+}
+
+.flight-row__info {
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.flight-row__code {
+  font-weight: 600;
+}
+
+.flight-row__route {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.flight-row__time {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* --- Map ---------------------------------------------------- */
+.map-container {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+}
+
+/* --- Timeline (Day by Day) ---------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--color-border);
+  border-radius: 1px;
+}
+
+.timeline__item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: -22px;
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.timeline__item--today .timeline__dot {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent), 0 0 8px rgba(246, 173, 85, 0.4);
+}
+
+.timeline__item--today .card {
+  border: 2px solid var(--color-accent);
+}
+
+.day-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.day-card__date {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.day-card__location {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* --- Badges ------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge--discussing {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge--pending {
+  background: var(--color-accent-light);
+  color: #c05621;
+  border: 1px dashed var(--color-accent);
+}
+
+.badge--confirmed {
+  background: #f0fdf4;
+  color: #276749;
+}
+
+[data-theme="light"] .badge--discussing {
+  background: #fef3c7;
+  color: #92400e;
+}
+[data-theme="light"] .badge--confirmed {
+  background: #f0fdf4;
+  color: #276749;
+}
+
+[data-theme="dark"] .badge--discussing {
+  background: #3b2e10;
+  color: #fbbf24;
+}
+[data-theme="dark"] .badge--confirmed {
+  background: #1a3329;
+  color: #68d391;
+}
+
+[data-theme="black"] .badge--discussing {
+  background: #2a1f08;
+  color: #fbbf24;
+}
+[data-theme="black"] .badge--confirmed {
+  background: #0f1f14;
+  color: #68d391;
+}
+
+[data-theme="eva"] .badge--discussing {
+  background: #1a0d00;
+  color: #ff8c00;
+}
+[data-theme="eva"] .badge--confirmed {
+  background: #0d1a00;
+  color: #00ff41;
+}
+
+/* --- Black theme: component overrides ----------------------- */
+/* Cards: add subtle border since shadow is none */
+[data-theme="black"] .card,
+[data-theme="black"] .wishlist-item,
+[data-theme="black"] .progress-ring-container {
+  border: 1px solid #1a1a1a;
+}
+
+/* Countdown: dark gradient instead of bright primary */
+[data-theme="black"] .countdown {
+  background: linear-gradient(135deg, #0d1b2a, #1b2a4a);
+  border: 1px solid #1f2f4f;
+}
+
+/* Budget total: dark background */
+[data-theme="black"] .budget-total {
+  background: #0d1b2a;
+  border: 1px solid #1f2f4f;
+}
+
+/* Flight direction badge */
+[data-theme="black"] .flight-card__direction {
+  background: #1a2d50;
+}
+
+/* Date nav pills */
+[data-theme="black"] .date-nav__pill--confirmed {
+  background: #1a2d50;
+  border-color: #2a4a7f;
+}
+
+/* Top nav active link */
+[data-theme="black"] .top-nav__link.active {
+  background: #1a2d50;
+}
+
+/* FAB top button */
+[data-theme="black"] .fab-top {
+  background: #1a2d50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Top nav & tab bar: ensure solid black */
+[data-theme="black"] .top-nav {
+  background: #000;
+  border-bottom-color: #1a1a1a;
+}
+
+[data-theme="black"] .tab-bar {
+  background: #000;
+  border-top-color: #1a1a1a;
+}
+
+/* Theme toggle button */
+[data-theme="black"] .theme-toggle {
+  background: #0d0d0d;
+  border-color: #1a1a1a;
+}
+
+/* Mobile theme toggle */
+[data-theme="black"] .theme-toggle--mobile {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Rate input */
+[data-theme="black"] .rate-control__input {
+  background: #0d0d0d;
+  border-color: #1a1a1a;
+}
+
+/* Leaflet popup */
+[data-theme="black"] .leaflet-popup-content-wrapper {
+  background: #0d0d0d !important;
+  color: #e5e5e5 !important;
+}
+[data-theme="black"] .leaflet-popup-tip {
+  background: #0d0d0d !important;
+}
+[data-theme="black"] .popup-detail {
+  color: #8b8b8b;
+}
+
+/* --- EVA Unit-01 theme: component overrides ----------------- */
+/* Cards: glowing purple border */
+[data-theme="eva"] .card,
+[data-theme="eva"] .wishlist-item,
+[data-theme="eva"] .progress-ring-container {
+  border: 1px solid #3a1070;
+}
+
+/* Countdown: EVA purple gradient */
+[data-theme="eva"] .countdown {
+  background: linear-gradient(135deg, #1a0033, #3a1070);
+  border: 1px solid #5b21b6;
+  color: #00ff41;
+}
+
+[data-theme="eva"] .countdown__number {
+  color: #00ff41;
+}
+
+/* Budget total: EVA purple */
+[data-theme="eva"] .budget-total {
+  background: linear-gradient(135deg, #2e0854, #1a0033);
+  border: 1px solid #5b21b6;
+}
+
+/* Flight direction badge */
+[data-theme="eva"] .flight-card__direction {
+  background: #2e0854;
+  color: #00ff41;
+}
+
+/* Date nav pills */
+[data-theme="eva"] .date-nav__pill--confirmed {
+  background: #2e0854;
+  border-color: #7b2ff2;
+  color: #00ff41;
+}
+
+[data-theme="eva"] .date-nav__pill--discussing {
+  border-color: #ff8c00;
+  background: #1a0d00;
+}
+
+/* Top nav active link */
+[data-theme="eva"] .top-nav__link.active {
+  background: #2e0854;
+  color: #00ff41;
+}
+
+/* Top nav & tab bar */
+[data-theme="eva"] .top-nav {
+  background: #0a0014;
+  border-bottom: 1px solid #2a1050;
+}
+
+[data-theme="eva"] .tab-bar {
+  background: #0a0014;
+  border-top: 1px solid #2a1050;
+}
+
+[data-theme="eva"] .tab-bar__btn.active {
+  color: #00ff41;
+}
+
+/* FAB top button */
+[data-theme="eva"] .fab-top {
+  background: #7b2ff2;
+  color: #00ff41;
+  box-shadow: 0 2px 12px rgba(123, 47, 242, 0.4);
+}
+
+/* Theme toggle button */
+[data-theme="eva"] .theme-toggle {
+  background: #1a0033;
+  border-color: #2a1050;
+}
+
+/* Mobile theme toggle */
+[data-theme="eva"] .theme-toggle--mobile {
+  box-shadow: 0 2px 12px rgba(123, 47, 242, 0.4);
+}
+
+/* Rate input */
+[data-theme="eva"] .rate-control__input {
+  background: #1a0033;
+  border-color: #2a1050;
+  color: #e0d8f0;
+}
+
+/* Leaflet popup */
+[data-theme="eva"] .leaflet-popup-content-wrapper {
+  background: #1a0033 !important;
+  color: #e0d8f0 !important;
+  border: 1px solid #3a1070;
+}
+[data-theme="eva"] .leaflet-popup-tip {
+  background: #1a0033 !important;
+}
+[data-theme="eva"] .popup-detail {
+  color: #9b8fbf;
+}
+
+/* Section title glow */
+[data-theme="eva"] .section-title {
+  color: #00ff41;
+  text-shadow: 0 0 12px rgba(0, 255, 65, 0.3);
+}
+
+/* Day card header accent */
+[data-theme="eva"] .day-card__header {
+  border-bottom-color: #3a1070;
+}
+
+/* Today highlight */
+[data-theme="eva"] .timeline__item--today .timeline__dot {
+  background: #00ff41;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+[data-theme="eva"] .timeline__item--today .card {
+  border-color: #00ff41;
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.15);
+}
+
+/* Timeline line */
+[data-theme="eva"] .timeline::before {
+  background: #3a1070;
+}
+
+/* Map container border */
+[data-theme="eva"] .map-container {
+  border: 1px solid #3a1070;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .badge--discussing {
+    background: #3b2e10;
+    color: #fbbf24;
+  }
+  html:not([data-theme]) .badge--confirmed {
+    background: #1a3329;
+    color: #68d391;
+  }
+}
+
+/* --- Weather ------------------------------------------------ */
+.day-card__weather {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.day-card__weather .emoji {
+  font-size: 1.1rem;
+}
+
+/* --- Hotel -------------------------------------------------- */
+.day-card__hotel {
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.day-card__hotel .hotel-icon {
+  flex-shrink: 0;
+}
+
+.day-card__hotel--pending {
+  border: 1px dashed var(--color-accent);
+  background: var(--color-pending-bg);
+}
+
+/* --- Activity List ------------------------------------------ */
+.activity-list {
+  list-style: none;
+}
+
+.activity-list li {
+  font-size: 0.85rem;
+  padding: 6px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.activity-list li + li {
+  border-top: 1px solid var(--color-border);
+}
+
+.activity-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.activity-tag--me {
+  background: var(--color-tag-me);
+  color: var(--color-tag-me-text);
+}
+
+.activity-tag--all {
+  background: var(--color-tag-all);
+  color: var(--color-tag-all-text);
+}
+
+.activity-placeholder {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  padding: 12px 0;
+  text-align: center;
+  font-style: italic;
+}
+
+/* --- Budget ------------------------------------------------- */
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.budget-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  padding: 8px 8px 8px 0;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.budget-table td {
+  padding: 12px 8px 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.budget-table .hotel-name {
+  font-weight: 500;
+  max-width: 180px;
+}
+
+.budget-table .amount {
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.budget-table .pending-cell {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.budget-total {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius);
+}
+
+.budget-total__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 4px 0;
+}
+
+.budget-total__row--main {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding-top: 8px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* --- Bar Chart ---------------------------------------------- */
+.bar-chart {
+  margin-top: 20px;
+}
+
+.bar-chart__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.bar-chart__item {
+  margin-bottom: 12px;
+}
+
+.bar-chart__label {
+  font-size: 0.78rem;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-chart__track {
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-chart__fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+/* --- Wishlist ----------------------------------------------- */
+.wishlist-area {
+  margin-bottom: 24px;
+}
+
+.wishlist-area__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.wishlist-area__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.wishlist-area__progress {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wishlist-item input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.wishlist-item__text {
+  flex: 1;
+}
+
+.wishlist-item__name {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.wishlist-item__category {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.wishlist-item--done {
+  opacity: 0.5;
+}
+
+.wishlist-item--done .wishlist-item__name {
+  text-decoration: line-through;
+}
+
+/* --- Focus Visible ------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* --- Date Nav Pills ----------------------------------------- */
+.date-nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 0 16px;
+  margin-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.date-nav::-webkit-scrollbar { display: none; }
+
+.date-nav__pill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.date-nav__pill:hover {
+  border-color: var(--color-primary);
+}
+
+.date-nav__pill--confirmed {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.date-nav__pill--discussing {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.date-nav__pill--pending {
+  border-style: dashed;
+  border-color: var(--color-text-secondary);
+}
+
+/* --- Progress Ring ------------------------------------------ */
+.progress-ring-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 20px;
+}
+
+.progress-ring__svg {
+  flex-shrink: 0;
+}
+
+.progress-ring__text {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.progress-ring__sub {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+/* --- Back to Top FAB ---------------------------------------- */
+.fab-top {
+  position: fixed;
+  bottom: calc(var(--tab-bar-height) + 16px);
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 90;
+}
+
+.fab-top.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* --- Exchange Rate Control ---------------------------------- */
+.rate-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.rate-control__input {
+  width: 80px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.rate-control__input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* --- Expandable Notes --------------------------------------- */
+.day-card__notes-toggle {
+  font-size: 0.78rem;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.day-card__notes-toggle:hover {
+  text-decoration: underline;
+}
+
+.day-card__notes-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.day-card__notes-body.open {
+  max-height: 200px;
+}
+
+/* --- Leaflet popup override --------------------------------- */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  font-family: var(--font-stack) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+}
+
+.popup-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.popup-detail {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+/* --- Theme Toggle ------------------------------------------- */
+.theme-toggle {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: inherit;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.theme-toggle:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+/* Mobile theme toggle (fixed position) */
+.theme-toggle--mobile {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 110;
+  padding: 6px 10px;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle--mobile .theme-toggle__label {
+  display: none;
+}
+
+/* --- Tax Refund --------------------------------------------- */
+.taxfree-alert {
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.taxfree-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.taxfree-summary li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.taxfree-summary li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.taxfree-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.taxfree-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.taxfree-step__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.taxfree-step__title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.taxfree-step__desc {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.taxfree-compare {
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+.taxfree-compare table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.taxfree-compare th {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.taxfree-compare td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.taxfree-compare tr:last-child td {
+  border-bottom: none;
+}
+
+.taxfree-notes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.taxfree-notes li {
+  padding: 0.4rem 0;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.taxfree-notes li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .taxfree-compare table,
+  .taxfree-compare thead,
+  .taxfree-compare tbody,
+  .taxfree-compare th,
+  .taxfree-compare td,
+  .taxfree-compare tr {
+    display: block;
+  }
+
+  .taxfree-compare thead {
+    display: none;
+  }
+
+  .taxfree-compare tr {
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .taxfree-compare td {
+    border-bottom: none;
+    padding: 0.4rem 0;
+  }
+
+  .taxfree-compare td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.15rem;
+  }
+
+  .taxfree-step__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+/* --- Desktop Overrides -------------------------------------- */
+@media (min-width: 768px) {
+  .top-nav {
+    display: block;
+  }
+
+  .tab-bar {
+    display: none;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+
+  .main {
+    padding: 32px 24px;
+  }
+
+  #map {
+    height: 420px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .budget-table .hotel-name {
+    max-width: none;
+  }
+
+  .fab-top {
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .theme-toggle--mobile {
+    display: none;
+  }
+}
+
+/* --- Print -------------------------------------------------- */
+@media print {
+  .top-nav,
+  .tab-bar,
+  .fab-top,
+  #map,
+  .map-container { display: none !important; }
+  body { padding: 0; background: #fff; color: #000; }
+  .section { display: block !important; opacity: 1 !important; animation: none !important; page-break-inside: avoid; }
+  .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+  .main { max-width: 100%; padding: 0; }
+}
+
+/* --- Utilities ---------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

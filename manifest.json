@@ -1,0 +1,10 @@
+{
+  "name": "九州福岡 10 日遊",
+  "short_name": "九州旅行",
+  "description": "2026 年 12 月九州福岡 10 日遊行程規劃",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0014",
+  "theme_color": "#0a0014",
+  "icons": []
+}

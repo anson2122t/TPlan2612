@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>九州福岡 10 日遊 — 2026.12</title>
+
+  <!-- OG / Share Preview -->
+  <meta property="og:title" content="九州福岡 10 日遊 — 2026.12" />
+  <meta property="og:description" content="10 天 9 夜九州旅行行程：福岡、由布院、別府、小倉" />
+  <meta property="og:type" content="website" />
+  <meta name="description" content="2026 年 12 月九州福岡 10 日遊行程規劃" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0014" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Top Nav (desktop) ===== -->
+  <nav class="top-nav" aria-label="主導航">
+    <div class="top-nav__inner" role="tablist">
+      <span class="top-nav__brand">🗾 九州 2026.12</span>
+      <button class="top-nav__link active" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview">總覽</button>
+      <button class="top-nav__link" data-tab="schedule" role="tab" aria-selected="false" aria-controls="schedule">行程</button>
+      <button class="top-nav__link" data-tab="budget" role="tab" aria-selected="false" aria-controls="budget">費用</button>
+      <button class="top-nav__link" data-tab="wishlist" role="tab" aria-selected="false" aria-controls="wishlist">願望清單</button>
+      <button class="top-nav__link" data-tab="packing" role="tab" aria-selected="false" aria-controls="packing">打包</button>
+      <button class="top-nav__link" data-tab="taxfree" role="tab" aria-selected="false" aria-controls="taxfree">退稅</button>
+      <button class="theme-toggle" id="themeToggleDesktop" aria-label="切換主題">
+        <span class="theme-toggle__icon">🌗</span>
+        <span class="theme-toggle__label">自動</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Main Content ===== -->
+  <main class="main">
+    <section id="overview" class="section active" role="tabpanel" aria-label="總覽"></section>
+    <section id="schedule" class="section" role="tabpanel" aria-label="行程"></section>
+    <section id="budget" class="section" role="tabpanel" aria-label="費用"></section>
+    <section id="wishlist" class="section" role="tabpanel" aria-label="願望清單"></section>
+    <section id="packing" class="section" role="tabpanel" aria-label="打包"></section>
+    <section id="taxfree" class="section" role="tabpanel" aria-label="退稅"></section>
+  </main>
+
+  <!-- ===== Theme Toggle (mobile) ===== -->
+  <button class="theme-toggle theme-toggle--mobile" id="themeToggleMobile" aria-label="切換主題">
+    <span class="theme-toggle__icon">🌗</span>
+    <span class="theme-toggle__label">自動</span>
+  </button>
+
+  <!-- ===== Back to Top ===== -->
+  <button class="fab-top" id="fabTop" aria-label="回到頂部">↑</button>
+
+  <!-- ===== Bottom Tab Bar (mobile) ===== -->
+  <nav class="tab-bar" aria-label="主導航">
+    <button class="tab-bar__btn active" data-tab="overview">
+      <span class="icon">🗺</span>
+      <span>總覽</span>
+    </button>
+    <button class="tab-bar__btn" data-tab="schedule">
+      <span class="icon">📅</span>
+      <span>行程</span>
+    </button>
+    <button class="tab-bar__btn" data-tab="budget">
+      <span class="icon">💰</span>
+      <span>費用</span>
+    </button>
+    <button class="tab-bar__btn" data-tab="wishlist">
+      <span class="icon">⭐</span>
+      <span>願望清單</span>
+    </button>
+    <button class="tab-bar__btn" data-tab="packing">
+      <span class="icon">🧳</span>
+      <span>打包</span>
+    </button>
+    <button class="tab-bar__btn" data-tab="taxfree">
+      <span class="icon">🧾</span>
+      <span>退稅</span>
+    </button>
+  </nav>
+
+  <!-- ===== Scripts ===== -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>
