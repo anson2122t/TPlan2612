@@ -1494,7 +1494,14 @@ a {
 .tax-accom-rule__type { color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 8px; }
 .tax-accom-rule__tiers { margin: 0; padding-left: 20px; }
 .tax-accom-rule__tiers li { margin-bottom: 4px; font-size: 0.9rem; }
-.tax-accom-rule--none { border-left: 3px solid var(--color-accent); }
+.tax-accom-rule--pending { border-left: 3px solid var(--color-accent); }
+
+.taxfree-checked { color: var(--color-text-secondary); font-size: 0.85rem; margin-bottom: 12px; }
+.taxfree-guidance, .taxfree-sources { padding: 16px; line-height: 1.7; margin-bottom: 16px; }
+.taxfree-guidance { border-left: 3px solid var(--color-accent); }
+.taxfree-sources ul { margin: 12px 0 0; padding-left: 20px; }
+.taxfree-sources li { margin-bottom: 8px; }
+.taxfree-sources a { overflow-wrap: anywhere; }
 
 /* 住宿稅估算表 */
 .tax-accom-estimate {
