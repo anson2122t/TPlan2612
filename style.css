@@ -1064,6 +1064,183 @@ a {
   text-decoration: line-through;
 }
 
+/* Wishlist places keep their controls separate from the checkbox. */
+.wishlist-map-card {
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.wishlist-map-toolbar,
+.wishlist-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wishlist-map-toolbar {
+  margin-bottom: 10px;
+}
+
+.wishlist-map-filter,
+.wishlist-item__locate,
+.wishlist-item__maps {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font: 500 0.8rem var(--font-stack);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wishlist-map-filter[aria-pressed="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.wishlist-map-filter:not(:disabled):hover,
+.wishlist-item__locate:not(:disabled):hover,
+.wishlist-item__maps:hover {
+  border-color: var(--color-primary);
+}
+
+.wishlist-map-filter:disabled,
+.wishlist-item__locate:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.wishlist-map-legend,
+.wishlist-map-status {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.wishlist-map-legend {
+  margin-bottom: 10px;
+}
+
+.wishlist-map-card .map-container {
+  margin-bottom: 10px;
+}
+
+#wishlist-map {
+  height: 300px;
+  width: 100%;
+}
+
+#wishlist .wishlist-item--place {
+  flex-wrap: wrap;
+  cursor: default;
+}
+
+#wishlist .wishlist-item__check {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+#wishlist .wishlist-item__text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#wishlist .wishlist-item__name,
+#wishlist .wishlist-item__category,
+#wishlist .wishlist-item__address {
+  display: block;
+}
+
+#wishlist .wishlist-item__address {
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+#wishlist .wishlist-item__actions {
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+#wishlist .wishlist-item--done {
+  opacity: 1;
+}
+
+#wishlist .wishlist-item--done .wishlist-item__name {
+  color: var(--color-text-secondary);
+}
+
+.wishlist-marker {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font: 700 18px var(--font-stack);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.wishlist-marker--done {
+  background: var(--color-success);
+  color: #153522;
+}
+
+.wishlist-map-popup .leaflet-popup-content-wrapper,
+.wishlist-map-popup .leaflet-popup-tip {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.wishlist-map-popup .popup-detail,
+.wishlist-map-popup .wishlist-popup__status {
+  color: var(--color-text-secondary);
+}
+
+.wishlist-popup__status {
+  margin: 8px 0;
+  font-size: 0.8rem;
+}
+
+.wishlist-map-popup a,
+.wishlist-map-popup a.leaflet-popup-close-button {
+  color: var(--color-primary);
+}
+
+.wishlist-popup a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+@media (max-width: 600px) {
+  #wishlist .wishlist-item__check {
+    flex-basis: 100%;
+  }
+
+  #wishlist .wishlist-item__actions {
+    width: 100%;
+    padding-left: 32px;
+  }
+}
+
 /* --- Focus Visible ------------------------------------------ */
 :focus-visible {
   outline: 2px solid var(--color-primary);
@@ -1656,8 +1833,13 @@ a {
     padding: 32px 24px;
   }
 
-  #map {
+  #map,
+  #wishlist-map {
     height: 420px;
+  }
+
+  .wishlist-map-card {
+    scroll-margin-top: calc(var(--nav-height) + 16px);
   }
 
   .section-title {
@@ -1689,6 +1871,8 @@ a {
   .fab-top,
   #map,
   .map-container { display: none !important; }
+  .wishlist-map-card,
+  .wishlist-item__locate { display: none !important; }
   body { padding: 0; background: #fff; color: #000; }
   .section { display: block !important; opacity: 1 !important; animation: none !important; page-break-inside: avoid; }
   .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
