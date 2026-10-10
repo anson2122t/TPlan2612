@@ -927,6 +927,19 @@ a {
   max-width: 180px;
 }
 
+.hotel-address {
+  margin: 6px 0 10px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.budget-table .hotel-name .wishlist-item__locate {
+  font-size: 0.75rem;
+}
+
 .budget-table .amount {
   font-weight: 600;
   text-align: right;
@@ -1084,6 +1097,70 @@ a {
   margin-bottom: 10px;
 }
 
+.wishlist-hotel-control {
+  margin-bottom: 16px;
+}
+
+.wishlist-hotel-control label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.wishlist-hotel-select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 500 0.85rem var(--font-stack);
+}
+
+.wishlist-distance-origin {
+  margin: 10px 0 4px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.wishlist-hotels {
+  margin-bottom: 24px;
+}
+
+.wishlist-hotels summary {
+  min-height: 44px;
+  line-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wishlist-hotel {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.wishlist-hotel--selected {
+  border-color: var(--color-primary);
+}
+
+.wishlist-hotel h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.wishlist-hotel .wishlist-item__actions {
+  margin-top: 10px;
+}
+
 .wishlist-map-filter,
 .wishlist-item__locate,
 .wishlist-item__maps {
@@ -1161,13 +1238,21 @@ a {
 
 #wishlist .wishlist-item__name,
 #wishlist .wishlist-item__category,
-#wishlist .wishlist-item__address {
+#wishlist .wishlist-item__address,
+#wishlist .wishlist-item__distance {
   display: block;
 }
 
 #wishlist .wishlist-item__address {
   margin-top: 4px;
   color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.wishlist-item__distance {
+  margin-top: 6px;
+  color: var(--color-primary);
   font-size: 0.8rem;
   line-height: 1.5;
 }
@@ -1201,6 +1286,17 @@ a {
 .wishlist-marker--done {
   background: var(--color-success);
   color: #153522;
+}
+
+.wishlist-marker--hotel {
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+.wishlist-marker--selected {
+  box-shadow: 0 0 0 3px var(--color-primary), 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .wishlist-map-popup .leaflet-popup-content-wrapper,
