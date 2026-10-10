@@ -1122,13 +1122,6 @@ a {
   font: 500 0.85rem var(--font-stack);
 }
 
-.wishlist-distance-origin {
-  margin: 10px 0 4px;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-
 .wishlist-hotels {
   margin-bottom: 24px;
 }
