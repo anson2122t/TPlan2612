@@ -33,6 +33,7 @@
     "Hiragino Kaku Gothic ProN", sans-serif;
   --nav-height: 56px;
   --tab-bar-height: 64px;
+  --tab-bar-offset: calc(var(--tab-bar-height) + env(safe-area-inset-bottom, 0px));
 }
 
 /* --- Dark Mode ---------------------------------------------- */
@@ -170,7 +171,7 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: calc(var(--tab-bar-height) + 16px);
+  padding-bottom: calc(var(--tab-bar-offset) + 16px);
   overflow-x: hidden;
 }
 
@@ -242,7 +243,7 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: var(--tab-bar-height);
+  height: var(--tab-bar-offset);
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
   padding-bottom: env(safe-area-inset-bottom, 0);
@@ -250,6 +251,9 @@ a {
 
 .tab-bar__btn {
   display: flex;
+  flex: 1;
+  min-width: 44px;
+  min-height: 48px;
   flex-direction: column;
   align-items: center;
   gap: 2px;
@@ -1330,6 +1334,285 @@ a {
   }
 }
 
+/* --- Preparation / eSIM ------------------------------------- */
+.preparation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.preparation-header .section-title {
+  margin-bottom: 0;
+}
+
+.preparation-heading {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  scroll-margin-top: 16px;
+}
+
+.esim-guides {
+  margin-bottom: 28px;
+}
+
+.esim-guides__intro {
+  margin-bottom: 16px;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.esim-guides__cards {
+  display: grid;
+  gap: 16px;
+}
+
+.esim-guide {
+  min-width: 0;
+  margin-bottom: 0;
+  padding: 16px;
+}
+
+.esim-guide__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.esim-guide__heading h3 {
+  font-size: 1.05rem;
+}
+
+.esim-guide__edition {
+  padding: 2px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.esim-guide__thumbnail {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  cursor: zoom-in;
+}
+
+.esim-guide__thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.esim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.esim-actions > .esim-action {
+  flex: 1 1 110px;
+}
+
+.esim-action {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 600 0.95rem/1.4 var(--font-stack);
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.esim-action:hover {
+  border-color: var(--color-primary);
+}
+
+.esim-action--primary {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.esim-action:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.esim-guide__meta {
+  margin-top: 8px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+body.esim-preview-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+.esim-viewer {
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.esim-viewer[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.esim-viewer::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.esim-viewer__header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) 12px max(12px, env(safe-area-inset-left, 0px));
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.esim-viewer__header h2 {
+  font-size: 1rem;
+}
+
+.esim-viewer__header p {
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.esim-viewer__header > .esim-action {
+  flex-shrink: 0;
+}
+
+.esim-viewer__viewport {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.esim-viewer__canvas {
+  display: grid;
+  place-items: center;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.esim-viewer__canvas img {
+  display: block;
+  max-width: none;
+  background: #fff;
+}
+
+.esim-viewer__message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+  background: var(--color-bg);
+  text-align: center;
+}
+
+.esim-viewer__message[hidden] {
+  display: none;
+}
+
+.esim-viewer__footer {
+  flex: 0 0 auto;
+  padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.esim-viewer__zoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.esim-viewer__scale {
+  min-width: 54px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.esim-viewer__save-hint {
+  margin-top: 8px;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .preparation-heading {
+    scroll-margin-top: calc(var(--nav-height) + 16px);
+  }
+
+  .esim-guides__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .esim-viewer__header p,
+  .esim-viewer__save-hint {
+    display: none;
+  }
+
+  .esim-viewer__footer {
+    display: flex;
+    gap: 12px;
+  }
+
+  .esim-viewer__zoom {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .esim-viewer__footer .esim-actions {
+    flex: 1;
+  }
+}
+
 /* --- Focus Visible ------------------------------------------ */
 :focus-visible {
   outline: 2px solid var(--color-primary);
@@ -1414,7 +1697,7 @@ a {
 /* --- Back to Top FAB ---------------------------------------- */
 .fab-top {
   position: fixed;
-  bottom: calc(var(--tab-bar-height) + 16px);
+  bottom: calc(var(--tab-bar-offset) + 16px);
   right: 16px;
   width: 44px;
   height: 44px;
