@@ -423,12 +423,12 @@ a {
   text-align: center;
 }
 
-.flight-row__tag--me {
+.flight-row__tag--tw {
   background: var(--color-tag-me);
   color: var(--color-tag-me-text);
 }
 
-.flight-row__tag--fd {
+.flight-row__tag--hk {
   background: var(--color-accent-light);
   color: #c05621;
 }
@@ -884,7 +884,7 @@ a {
   margin-top: 2px;
 }
 
-.activity-tag--me {
+.activity-tag--tw {
   background: var(--color-tag-me);
   color: var(--color-tag-me-text);
 }
