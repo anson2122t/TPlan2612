@@ -2094,6 +2094,60 @@ body.esim-preview-open {
 .taxfree-sources ul { margin: 12px 0 0; padding-left: 20px; }
 .taxfree-sources li { margin-bottom: 8px; }
 .taxfree-sources a { overflow-wrap: anywhere; }
+.taxfree-sources__heading { margin: 16px 0 0; font-size: 1rem; }
+.taxfree-media-note { margin: 6px 0 0; font-size: 0.85rem; color: var(--color-text-secondary); }
+
+/* 可摺疊卡片（手續費表、資安） */
+.taxfree-details { padding: 0 16px; margin-bottom: 12px; }
+.taxfree-details[open] { padding-bottom: 16px; }
+.taxfree-details > summary {
+  min-height: 44px;
+  padding: 10px 0;
+  line-height: 1.5;
+  font-weight: 600;
+  cursor: pointer;
+}
+.taxfree-details[open] > summary {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 12px;
+}
+.taxfree-details__note { margin: 0 0 12px; font-size: 0.85rem; line-height: 1.6; color: var(--color-text-secondary); }
+.taxfree-details .taxfree-timing { margin-bottom: 0; }
+
+/* 資安風險與對策 */
+.taxfree-security { margin-bottom: 20px; }
+.taxfree-security__item { border-left: 3px solid var(--color-accent); }
+.taxfree-security__risk { margin: 0 0 12px; font-size: 0.92rem; line-height: 1.7; }
+.taxfree-security__label { margin-bottom: 6px; font-size: 0.85rem; font-weight: 700; color: var(--color-text-secondary); }
+.taxfree-security__actions { margin: 0; padding-left: 20px; }
+.taxfree-security__actions li { margin-bottom: 6px; font-size: 0.9rem; line-height: 1.6; }
+
+/* Visit Japan Web 專用 Wi-Fi */
+.taxfree-wifi { padding: 16px; margin-bottom: 16px; }
+.taxfree-wifi__title { margin-bottom: 8px; font-weight: 600; }
+.taxfree-wifi__list { margin: 0 0 8px; }
+.taxfree-wifi__list dt { font-size: 0.8rem; font-weight: 600; color: var(--color-text-secondary); }
+.taxfree-wifi__list dd { margin: 2px 0 10px; min-width: 0; }
+.taxfree-wifi code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+.taxfree-wifi__note { margin: 0; font-size: 0.85rem; line-height: 1.6; color: var(--color-text-secondary); }
+
+/* 福岡機場實務 */
+.taxfree-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.taxfree-card { padding: 14px 16px; }
+.taxfree-card__title { margin: 0 0 6px; font-size: 1rem; }
+.taxfree-card__text { margin: 0; font-size: 0.9rem; line-height: 1.7; color: var(--color-text-secondary); }
+
+/* 退稅準備清單 */
+.taxfree-prep { margin-bottom: 20px; }
+.taxfree-prep .wishlist-area__title { font-size: 1rem; }
 
 /* 住宿稅估算表 */
 .tax-accom-estimate {
