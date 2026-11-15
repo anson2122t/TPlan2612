@@ -2144,6 +2144,7 @@ body.esim-preview-open {
 .taxfree-card { padding: 14px 16px; }
 .taxfree-card__title { margin: 0 0 6px; font-size: 1rem; }
 .taxfree-card__text { margin: 0; font-size: 0.9rem; line-height: 1.7; color: var(--color-text-secondary); }
+.taxfree-card__links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 
 /* 退稅準備清單 */
 .taxfree-prep { margin-bottom: 20px; }
